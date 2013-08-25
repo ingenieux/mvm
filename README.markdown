@@ -16,16 +16,16 @@ or Wget:
 
     wget -qO- https://raw.github.com/ingenieux/mvm/master/install.sh | sh
 
-<sub>The script clones the nvm repository to `~/.nvm` and adds the source line to your profile (`~/.bash_profile` or `~/.profile`).</sub>
+<sub>The script clones the mvm repository to `~/.mvm` and adds the source line to your profile (`~/.bash_profile` or `~/.profile`).</sub>
 
 
 ### Manual install
 
-For manual install create a folder somewhere in your filesystem with the `nvm.sh` file inside it.  I put mine in a folder called `nvm`.
+For manual install create a folder somewhere in your filesystem with the `mvm.sh` file inside it.  I put mine in a folder called `mvm`.
 
 Or if you have `git` installed, then just clone it:
 
-    git clone https://github.com/ingenieux/mvm.git ~/.nvm
+    git clone https://github.com/ingenieux/mvm.git ~/.mvm
 
 To activate mvm, you need to source it from your bash shell
 
@@ -91,7 +91,7 @@ Tests are written in [Urchin](http://www.urchin.sh). Install Urchin like so.
 
 There are slow tests and fast tests. The slow tests do things like install node
 and check that the right versions are used. The fast tests fake this to test
-things like aliases and uninstalling. From the root of the nvm git repository,
+things like aliases and uninstalling. From the root of the mvm git repository,
 run the fast tests like this.
 
     urchin test/fast
@@ -104,57 +104,46 @@ Run all of the tests like this
 
     urchin test
 
-Nota bene: Avoid running nvm while the tests are running.
+Nota bene: Avoid running mvm while the tests are running.
 
 ## Bash completion
 
 To activate, you need to source `bash_completion`:
 
-  	[[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
+  	[[ -r $MVM_DIR/bash_completion ]] && . $MVM_DIR/bash_completion
 
 Put the above sourcing line just below the sourcing line for NVM in your profile (`.bashrc`, `.bash_profile`).
 
 ### Usage
 
-nvm
+mvm
 
-	$ nvm [tab][tab]
+	$ mvm [tab][tab]
 	alias          copy-packages  help           list           run            uninstall      version
 	clear-cache    deactivate     install        ls             unalias        use
 
-nvm alias
+mvm alias
 
-	$ nvm alias [tab][tab]
+	$ mvm alias [tab][tab]
 	default
 
-	$ nvm alias my_alias [tab][tab]
+	$ mvm alias my_alias [tab][tab]
 	v0.4.11        v0.4.12       v0.6.14
 
-nvm use
+mvm use
 
-	$ nvm use [tab][tab]
+	$ mvm use [tab][tab]
 	my_alias        default        v0.4.11        v0.4.12       v0.6.14
 
-nvm uninstall
+mvm uninstall
 
-	$ nvm uninstall [tab][tab]
+	$ mvm uninstall [tab][tab]
 	my_alias        default        v0.4.11        v0.4.12       v0.6.14
 
 ## Problems
 
-If you try to install a node version and the installation fails, be sure to delete the node downloads from src (~/.nvm/src/) or you might get an error when trying to reinstall them again or you might get an error like the following:
+If you try to install a node version and the installation fails, be sure to delete the node downloads from src (~/.mvm/src/) or you might get an error when trying to reinstall them again or you might get an error like the following:
 
     curl: (33) HTTP server doesn't seem to support byte ranges. Cannot resume.
 
-Where's my 'sudo node'? Checkout this link:
-
-https://github.com/creationix/nvm/issues/43
-
-on Arch Linux and other systems using python3 by default, before running *install* you need to
-
-      export PYTHON=python2
-
-After the v0.8.6 release of node, nvm tries to install from binary packages. But in some systems, the official binary packages don't work due to incompatibility of shared libs. In such cases, use `-s` option to force install from source:
-
-    nvm install -s 0.8.6
 
