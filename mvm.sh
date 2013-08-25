@@ -335,6 +335,7 @@ mvm() {
       fi
       export PATH
       hash -r
+      export M2_HOME="$MVN_DIR/$VERSION"
       export MVM_PATH="$MVM_DIR/$VERSION/bin/mvn"
       export MVM_BIN="$MVM_DIR/$VERSION/bin"
       echo "Now using maven $VERSION"
