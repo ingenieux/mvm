@@ -239,7 +239,7 @@ mvm() {
 
       [ -d "$MVM_DIR/$VERSION" ] && echo "$VERSION is already installed." && return
 
-      url="https://dist.apache.org/repos/dist/release/maven/maven-3/$VERSION/binaries/apache-maven-$VERSION-bin.tar.gz"
+      url="https://archive.apache.org/dist/maven/maven-3/$VERSION/binaries/apache-maven-$VERSION-bin.tar.gz"
       sum=`curl -s $url.sha1`
       echo "url: $url sum: $sum"
       local tmpdir="$MVM_DIR/bin/maven-$VERSION"
